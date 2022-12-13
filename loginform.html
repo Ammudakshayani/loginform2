@@ -1,0 +1,101 @@
+<html>
+<head>
+	<script
+     language="javascript">
+		function validate()
+		{
+			var user=document.getElementById("username").value;
+			var pass=document.getElementById("password").value;
+			if (user==""||user.length<10) 
+			{
+				document.getElementById("messages").innerHTML="**please enter valid Username";
+				return false;
+			}
+			if (user==""||user.length>10) 
+			{
+				document.getElementById("messages").innerHTML="**please enter valid Username";
+				return false;
+			}
+			
+			sp=0;
+			for(i=0;i<user.length;i++)
+			{
+				ch=user.charAt(i);
+				if(ch=='  ')
+					sp=1;
+			}
+			if(sp==1)
+            {
+				document.getElementById("messages").innerHTML="**enter password without using spaces";
+			    return false;
+			}
+			if(pass==""||pass.length==0)
+            {
+            	document.getElementById("messages").innerHTML=" **please enter password";
+            	return false;
+            }
+            if(pass==""||pass.length<6)
+            {
+            	document.getElementById("messages").innerHTML=" **please enter valid password";
+            	return false;
+            }
+            if(pass==""||pass.length>=6)
+            {
+			if((user.charAt(0)!=2))
+			{
+				document.getElementById("messages").innerHTML="**Invalid Username";
+			        return false;
+			} 
+			if((user.charAt(1)!=1))
+			    {
+				    document.getElementById("messages").innerHTML="**invalid Username";
+			        return false;
+			    }
+			    else
+			    {
+				    document.getElementById("messages").innerHTML="login Successfull";
+				   
+				    window.location.href="loginform2.html";
+				    return false;
+			        
+			    }  
+            }
+            else
+            {
+             document.getElementById("messages").innerHTML="Something went wrong";
+			        return false;	
+            }
+		}
+	</script>
+	
+</head>
+<body>
+	<div style="position: relative;
+	            top: 25%;
+	            left: 35%;
+	            height: auto;
+	            width: 400px;
+	            padding: 40px;
+	            
+	            box-sizing: border-box;
+	            box-shadow: 0 15px 25px rgba(0,0,0,.6);
+                border-radius: 10px;">
+	 <form onsubmit="return validate();">
+		
+			<div style="position: relative;">
+		  <h2 style="padding-bottom: 20px;
+                     color: #000;
+                     text-align: center;">Login Form</h2>
+		   Username : <input type="text" id="username" name="username" value=""><br></br>
+		   Password: <input type="password" id="password" name="pass" value=""><br></br>
+
+		   <span id="messages" style="color: darkred;"></span>
+		   <div style="height: 20px;
+		               width: 40px;
+		               background: ;">
+		  <input type="submit" name="submit" value="Login"><br></br></div>
+		</div>
+	  
+	  </form>
+	</div>
+ </body>
